@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/wx?useSSL=false&serverTimezone=GMT
+    username: root
+    password: 123456
+
+mybatis:
+  # classpath = /src/main/resources
+  config-location: classpath:mybatisConfig.xml
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    root: info
+    com.cx.wx.dao.UserDao: debug
