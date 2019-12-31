@@ -7,9 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class WXApiImpl implements WXApiService {
@@ -47,14 +45,5 @@ public class WXApiImpl implements WXApiService {
             "https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=%s",
             cache.getAccessTokenCache()
         );
-    }
-
-    private List<String> params(String ...args) {
-        List<String> lis = new ArrayList<>();
-        for (String s : args) {
-            System.out.println(s);
-            lis.add(s);
-        }
-        return lis;
     }
 }
