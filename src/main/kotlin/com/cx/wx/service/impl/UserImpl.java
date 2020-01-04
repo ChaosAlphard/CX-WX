@@ -23,10 +23,8 @@ public class UserImpl implements UserService {
 
     @Override
     public String getUserInfo(String code) {
-        String url = String.format(
-        "https://api.weixin.qq.com/sns/jscode2session?%s&js_code=%s&grant_type=authorization_code",
-            idAndSecret, code
-        );
+        String url = "https://api.weixin.qq.com/sns/jscode2session?"+
+                idAndSecret+"&js_code="+code+"&grant_type=authorization_code";
 
         try {
             return HttpUtil.sendGet(url, String.class).getBody();

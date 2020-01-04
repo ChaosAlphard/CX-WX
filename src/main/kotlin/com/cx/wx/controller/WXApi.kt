@@ -20,7 +20,7 @@ class WXApi {
     val wx: WXApiService = WXApiImpl()
 
     @RequestMapping("submsg.sendToManager")
-    fun sendToManager(msg: String?, from: String?): Dto<Any> {
+    fun sendToManager(msg: String?, from: String?): Dto<RemindMsg> {
         msg?:return Dto(BaseEnum.LOST_PARAM)
         from?:return Dto(BaseEnum.LOST_PARAM)
 
@@ -60,10 +60,11 @@ class WXApi {
                 .setThing1(Val(msg2))
                 .setDate2(Val(DateUtil.getCurrentDate()))
 
+        // oqFTn5YDeXCQG7HTPWWMjA7DKFvA  测试者openid(吴)
         return try {
             Dto(BaseEnum.SEND_MESSAGE_SUCCESS,
                 wx.getSubscribeMessage(
-                    openid,
+                    "oqFTn5YDeXCQG7HTPWWMjA7DKFvA",
                     templateid,
                     message,
                     RemindMsg::class.java

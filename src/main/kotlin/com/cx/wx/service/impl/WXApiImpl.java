@@ -32,6 +32,7 @@ public class WXApiImpl implements WXApiService {
         return HttpUtil.sendPost(getSubUrl(), data, clazz).getBody();
     }
 
+    // 初始化公用参数
     private Map<String, Object> initParam(String openid, String templateid) {
         Map<String, Object> map = new HashMap<>();
         map.put("touser", openid);
@@ -39,11 +40,9 @@ public class WXApiImpl implements WXApiService {
         return map;
     }
 
+    // 获取订阅消息请求路径
     @NotNull
     private String getSubUrl() {
-        return String.format(
-            "https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=%s",
-            cache.getAccessTokenCache()
-        );
+        return "https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token="+cache.getAccessTokenCache();
     }
 }

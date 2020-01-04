@@ -14,3 +14,7 @@ logging:
   level:
     root: info
     com.cx.wx.dao.UserDao: debug
+  file:
+    path: ./log
+    max-size: 128MB
+    max-history: 30

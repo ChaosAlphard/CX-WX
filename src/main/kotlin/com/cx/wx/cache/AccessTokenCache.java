@@ -10,10 +10,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class AccessTokenCache {
     private static final String idAndSecret = AppSettings.getIdAndSecret();
-    private static final String getTokenUrl = String.format(
-        "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&%s",
-        idAndSecret
-    );
+    private static final String getTokenUrl = "https://api.weixin.qq.com/cgi-bin/token?" +
+            "grant_type=client_credential&"+ idAndSecret;
 
     private String accessToken = null;
     // token 过期时间
@@ -31,9 +29,9 @@ public class AccessTokenCache {
         }
         AccessToken token = this.getAccessToken();
         this.setCache(token);
-        log.info(String.format("获取token成功, 失效时间: %s",
+        log.info("获取Token成功, 失效时间: "+
             DateUtil.date2Str(DateUtil.timeSecond2Date(this.expiresTime))
-        ));
+        );
 
         return this.accessToken;
     }
@@ -67,9 +65,9 @@ public class AccessTokenCache {
         }
         boolean isValid = this.expiresTime > DateUtil.getCurrentSecond();
         if(isValid) {
-            log.info("token有效");
+            log.info("Token有效");
         } else {
-            log.info("token失效");
+            log.info("Token失效");
         }
         return isValid;
     }
